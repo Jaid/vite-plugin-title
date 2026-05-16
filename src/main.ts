@@ -4,7 +4,7 @@ import type {Plugin, ResolvedConfig} from 'vite'
 import fs from 'fs/promises' // eslint-disable-line
 import path from 'path'
 
-export default function titlePlugin(title?: string) {
+function titlePlugin(title?: string) {
   let resolvedTitle = title
   const plugin: Plugin = {
     name: 'title',
@@ -36,3 +36,7 @@ export default function titlePlugin(title?: string) {
   }
   return plugin
 }
+
+export const makeTitlePlugin = titlePlugin
+
+export default makeTitlePlugin()
