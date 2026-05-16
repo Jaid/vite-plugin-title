@@ -1,34 +1,35 @@
 {
   "name": "vite-plugin-title",
   "version": "0.1.0",
+  "type": "module",
+  "funding": "https://github.com/sponsors/Jaid",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Jaid/vite-plugin-title.git"
-  },
-  "devDependencies": {
-    "bun-types": "^1.3.14",
-    "eslint": "^10.4.0",
-    "eslint-config-jaid": "^26.0.0",
-    "tsconfig-jaid-bun": "^15.2.0",
-    "type-fest": "^5.6.0",
-    "typescript": "^6.0.3"
-  },
-  "peerDependencies": {
-    "vite": "^8"
   },
   "exports": {
     ".": {
       "default": "./src/main.ts"
     }
   },
-  "funding": "https://github.com/sponsors/Jaid",
   "imports": {
     "#src/*": "./src/*",
     "#root/*": "./*"
   },
-  "license": "MIT",
   "scripts": {
     "test": "bun test --max-concurrency 1 ./test"
   },
-  "type": "module"
+  "peerDependencies": {
+    "vite": "^8"
+  },
+  "devDependencies": {
+    "bun-types": "^1.3.14",
+    "eslint": "^10.4.0",
+    "eslint-config-jaid": "^26.0.0",
+    "fs-extra": "^11.3.5",
+    "tsconfig-jaid-bun": "^15.2.0",
+    "type-fest": "^5.6.0",
+    "typescript": "^6.0.3"
+  }
 }
