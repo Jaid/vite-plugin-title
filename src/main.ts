@@ -1,8 +1,9 @@
 import type {PackageJson} from 'type-fest'
 import type {Plugin, ResolvedConfig} from 'vite'
 
-import fs from 'fs/promises' // eslint-disable-line
-import path from 'path'
+import {join} from 'node:path'
+
+import fs from 'fs-extra'
 
 export default function titlePlugin(title?: string) {
   let resolvedTitle = title
@@ -23,11 +24,10 @@ export default function titlePlugin(title?: string) {
   }
   if (!resolvedTitle) {
     plugin.configResolved = async (resolvedConfig: ResolvedConfig) => {
-      const packageJsonFile = path.join(resolvedConfig.root, 'package.json')
-      const packageJsonFileExists = await fs.exists(packageJsonFile)
-      if (packageJsonFileExists) {
-        const packageJsonString = await fs.readFile(packageJsonFile, 'utf8')
-        const packageJson = JSON.parse(packageJsonString) as PackageJson
+      const packageJsonFile = join(resolvedConfig.root, 'package.json')
+      const packageJsonExists = await fs.pathExists(packageJsonFile)
+      if (packageJsonExists) {
+        const packageJson = await fs.readJson(packageJsonFile) as PackageJson
         if (packageJson.name) {
           resolvedTitle = (packageJson.displayName as string | undefined) || packageJson.name
         }

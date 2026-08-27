@@ -18,6 +18,8 @@ jobs:
       run: bun install --frozen-lockfile
     - name: test
       run: bun run test
+    - name: testNodeRuntime
+      run: bun run test:node
     - name: publish
       run: bun publish
       env:
